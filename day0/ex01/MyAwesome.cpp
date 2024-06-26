@@ -16,8 +16,15 @@ int main()
 {
     PhoneBook manager;
     std::string key;
-    std::string name;
+    std::string first_name;
+    std::string last_name;
+    std::string nickname;
     std::string number;
+    std::string darkest_secret;
+   
+   
+    // std::string firsname;
+    // std::string number;
 
     while (1)
     {
@@ -25,22 +32,43 @@ int main()
 
         if (eofcheck() == 1)
             break;
-        else if (key == "exit" || key == "e")
+        else if (key == "EXIT" || key == "e")
             break;
-        else if (key == "add" || key == "a")
+        else if (key == "ADD" || key == "a")
         {
-            std::cin >> name;
+            std::cout << std::endl;
+            std::cout << "get first name: ";
+            std::cin >> first_name;
             if (eofcheck() == 1)
                 break;
+            std::cout << "get last name: ";
+            std::cin >> last_name;
+            if (eofcheck() == 1)
+                break;
+            std::cout << "get nickname: ";
+            std::cin >> nickname;
+            if (eofcheck() == 1)
+                break;
+            std::cout << "get number: ";
             std::cin >> number;
             if (eofcheck() == 1)
                 break;
-            manager.addcontact(name, number);
+            std::cout << "get darkest_secret: ";
+            std::cin >> darkest_secret;
+            if (eofcheck() == 1)
+                break;
+            std::cout << std::endl;
+
+
+
+
+            manager.addcontact(first_name, last_name, nickname, darkest_secret, number);
+            std::cout << "New contact added succesfully\n" << std::endl;
         }
-        else if (key == "display" || key == "d")
+        else if (key == "SEARCH" || key == "s")
             manager.displaycontacts();
-        else
-            std::cout << "unkonwn key: \"" << key << "\"" << std::endl;
+        // else
+        //     std::cout << "unkonwn key: \"" << key << "\"" << std::endl;
     }
     return 0;
 }
