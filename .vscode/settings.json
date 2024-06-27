@@ -1,6 +1,7 @@
 {
     "C_Cpp.default.compilerPath": "/usr/bin/g++",
     "files.associations": {
+        "*.c": "c",
         "array": "cpp",
         "atomic": "cpp",
         "bit": "cpp",
@@ -46,6 +47,7 @@
         "streambuf": "cpp",
         "cinttypes": "cpp",
         "typeinfo": "cpp",
-        "cstring": "cpp"
+        "cstring": "cpp",
+        "sstream": "cpp"
     }
 }
