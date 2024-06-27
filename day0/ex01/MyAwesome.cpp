@@ -21,14 +21,12 @@ int main()
     std::string nickname;
     std::string number;
     std::string darkest_secret;
-   
-   
-    // std::string firsname;
-    // std::string number;
+
 
     while (1)
     {
-        std::cin >> key;
+        std::cout << "~>";
+        std::getline(std::cin, key);
 
         if (eofcheck() == 1)
             break;
@@ -37,38 +35,34 @@ int main()
         else if (key == "ADD" || key == "a")
         {
             std::cout << std::endl;
-            std::cout << "get first name: ";
-            std::cin >> first_name;
-            if (eofcheck() == 1)
-                break;
+            do {
+                std::cout << "get first name(REQUIRED): ";
+                std::getline(std::cin, first_name);
+                if (eofcheck() == 1)
+                    break;
+            } while (first_name.empty());
             std::cout << "get last name: ";
-            std::cin >> last_name;
+            std::getline(std::cin, last_name);
             if (eofcheck() == 1)
                 break;
             std::cout << "get nickname: ";
-            std::cin >> nickname;
+            std::getline(std::cin, nickname);
             if (eofcheck() == 1)
                 break;
             std::cout << "get number: ";
-            std::cin >> number;
+            std::getline(std::cin, number);
             if (eofcheck() == 1)
                 break;
             std::cout << "get darkest_secret: ";
-            std::cin >> darkest_secret;
+            std::getline(std::cin, darkest_secret);
             if (eofcheck() == 1)
                 break;
             std::cout << std::endl;
-
-
-
-
             manager.addcontact(first_name, last_name, nickname, darkest_secret, number);
             std::cout << "New contact added succesfully\n" << std::endl;
         }
         else if (key == "SEARCH" || key == "s")
             manager.displaycontacts();
-        // else
-        //     std::cout << "unkonwn key: \"" << key << "\"" << std::endl;
     }
     return 0;
 }

@@ -6,13 +6,13 @@
 #include <iomanip>
 #include <string>
 #include <vector>
-
+#include <sstream>
 #include <iostream>
 
 class PhoneBook
 {
     private:
-        struct contacts
+        struct Contacts
         {
             std::string first_name;
             std::string last_name;
@@ -20,7 +20,7 @@ class PhoneBook
             std::string darkest_secret;
             std::string number;
         };
-        contacts contacts[8];
+        Contacts contacts[8];
         int index;
         int nexttoremove;
     public:
@@ -49,29 +49,58 @@ class PhoneBook
                     nexttoremove = 0;
             }
         }
+        std::string getString(const std::string& text)
+        {
+            if (text.length() > 10)
+            {
+                return text.substr(0, 10 - 1) + ".";
+            }
+            else
+                return text;
+        }
         void printline(int index, const std::string& firstName, const std::string& lastName, const std::string& nickname)
         {
             std::cout << "|"
-                      << std::setw(10) << std::setfill(' ') << index + 1// "1"// + std::to_string(index)
+                      << std::setw(10) << index
                       << "|"
-                      << std::setw(10) << std::setfill(' ') << firstName
+                      << std::setw(10) << getString(firstName)
                       << "|"
-                      << std::setw(10) << std::setfill(' ') << lastName
+                      << std::setw(10) << getString(lastName)
                       << "|"
-                      << std::setw(10) << std::setfill(' ') << nickname
+                      << std::setw(10) << getString(nickname)
                       << "|" << std::endl;
         }
         void displaycontacts()
         {
             if (index == 0)
-                std::cout << "\nError: no contacts" << std::endl;
+                std::cout << "\nError: no contacts\n";
             else
             {
-                std::cout << "|-------------------------------------------|" << std::endl;
-                std::cout << "|     index| FirstName|  LastName|  NickName|" << std::endl;
+                std::cout << "|-------------------------------------------|\n";
+                std::cout << "|     index| FirstName|  LastName|  NickName|\n";
                 for (int i = 0; i < index; ++i)
                     printline(i, contacts[i].first_name, contacts[i].last_name, contacts[i].nickname);
-                std::cout << "|-------------------------------------------|";
+                std::cout << "|-------------------------------------------|\n";
+                int userIndex;
+                std::string userinput;
+                std::cout << "index->";
+                std::getline(std::cin, userinput);
+                std::istringstream iss(userinput);
+                if (iss >> userIndex)
+                {
+                    if (userIndex < 0 || userIndex >= index)
+                        std::cout << "\nthe index is out of rang\n";
+                    else
+                    {
+                        std::cout << "first name: " << contacts[userIndex].first_name << "\n";
+                        std::cout << "last  name: " << contacts[userIndex].last_name << "\n";
+                        std::cout << "nickname: " << contacts[userIndex].nickname << "\n";
+                        std::cout << "number: " << contacts[userIndex].number << "\n";
+                        std::cout << "darkest_secret: " << contacts[userIndex].darkest_secret << "\n";
+                    }
+                }
+                else
+                    std::cout << "Invalid input. Please enter a valid index.\n";
             }
             std::cout << std::endl;
         }
