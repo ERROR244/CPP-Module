@@ -6,6 +6,9 @@
 #include <sstream> 
 #include <string>
 
+enum levels { DEBUG, INFO, WARNING, ERROR, UNKNOWN };
+
+
 class Harl {
     public:
         void complain( std::string level );
