@@ -6,7 +6,7 @@ OBJ = $(SRCS:.cpp=.o)
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -ggdb3 -g3 #-fsanitize=address #-w #-v
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 AR  = ar rcs
 RM = rm -rf 
@@ -20,9 +20,9 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean : 
-		$(RM) $(OBJ)
+		@$(RM) $(OBJ)
 
 fclean : clean
-		$(RM) $(NAME)
+		@$(RM) $(NAME)
 
 re : fclean all
