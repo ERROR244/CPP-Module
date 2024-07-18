@@ -5,23 +5,27 @@
 #include <iostream>
 #include <sstream> 
 #include <string>
+#include <cmath>
 
 class Fixed {
     public:
         Fixed();
+        Fixed(const int a);
+        Fixed(const float a);
         Fixed(const Fixed& other);
         Fixed& operator=(const Fixed& other);
+        Fixed operator+(const Fixed& other);
         ~Fixed();
         int  getRawBits( void ) const;
         void setRawBits( int const raw );
-        Fixed operator*(const Fixed& other) const {
-            Fixed result;
-            result.setRawBits((value * other.value) >> Bits);
-            return result;
-        }
+        float toFloat( void ) const;
+        int toInt( void ) const;
     private:
         int value;
         static const int Bits = 8;
 };
+
+
+std::ostream& operator<<(std::ostream& os, const Fixed& other);
 
 #endif
