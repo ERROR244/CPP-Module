@@ -1,22 +1,19 @@
 #include "point.hpp"
 
 int main( void ) {
-    Point p1( 6.034f, 4.034f );
-    Point p2( 3.85f, 12.5f );
-    Point p3;
+    Point a( 0.5, 0.5 );
+    Point b( 10.5, 30.5 );
+    Point c( 20.5, 0.5 );
+    Point p( 10.5, 15.5 );
 
-    p3 = p2;
-    std::cout << p1.getXValue() << std::endl;
-    std::cout << p1.getYValue() << std::endl;
-    std::cout << p2.getXValue() << " <-> " << p3.getXValue() << std::endl;
-    std::cout << p2.getYValue() << " <-> " << p3.getYValue() << std::endl;
+    std::cout << "a.X = " << a.getXValue() << " <-> a.Y = " << a.getYValue() << std::endl;
+    std::cout << "b.X = " << b.getXValue() << " <-> b.Y = " << b.getYValue() << std::endl;
+    std::cout << "c.X = " << c.getXValue() << " <-> c.Y = " << c.getYValue() << std::endl;
+    std::cout << "p.X = " << p.getXValue() << " <-> p.Y = " << p.getYValue() << std::endl;
 
-    
-    // std::cout << << std::endl;
-    // std::cout << << std::endl;
-    // std::cout << << std::endl;
-    // std::cout << << std::endl;
-    // std::cout << << std::endl;
-
+    if (bsp(a, b, c, p) == true)
+        std::cout << "Output: Inside" << std::endl;
+    else
+        std::cout << "Output: Outside" << std::endl;
     return 0;
 }
