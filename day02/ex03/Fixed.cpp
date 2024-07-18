@@ -8,8 +8,7 @@ Fixed::Fixed(const float a) : value(static_cast<int>(roundf(a * (1 << Bits)))) {
 
 Fixed::Fixed(const Fixed& other) : value(other.value) {}
 
-Fixed::~Fixed() {
-}
+Fixed::~Fixed() {}
 
 Fixed& Fixed::operator=(const Fixed& other) {
     if (this != &other)

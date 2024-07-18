@@ -13,9 +13,9 @@ class Fixed {
         Fixed(const int a);
         Fixed(const float a);
         Fixed(const Fixed& other);
-        Fixed& operator=(const Fixed& other);
         ~Fixed();
 
+        Fixed& operator=(const Fixed& other);
 
         int  getRawBits( void ) const;
         void setRawBits( int const raw );
