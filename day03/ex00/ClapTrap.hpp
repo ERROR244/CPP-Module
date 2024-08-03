@@ -11,16 +11,20 @@ class ClapTrap {
     public:
         ClapTrap();
         ClapTrap(const std::string str);
+        ClapTrap(const ClapTrap& toCopy);
+        
         ~ClapTrap();
+
+        ClapTrap& operator=(const ClapTrap& other);
 
         void attack(const std::string& target);
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
     private:
         std::string  name;
-        unsigned int Hit = 10;
-        unsigned int Energy = 10;
-        unsigned int damage = 0;
+        unsigned int Hit;
+        unsigned int Energy;
+        unsigned int damage;
 };
 
 
