@@ -6,7 +6,7 @@ int eofcheck()
 {
     if (std::cin.eof())
     {
-        std::cout << "EOF reached. Exiting..." << std::endl;
+        std::cout << "\nEOF reached. Exiting..." << std::endl;
         return (1);
     }
     return (0);

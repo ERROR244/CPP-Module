@@ -25,10 +25,27 @@ class PhoneBook
         int nexttoremove;
     public:
         PhoneBook() : index(0), nexttoremove(0) {}
+        bool is_all_spaces(const std::string& str)
+        {
+            int i = 0;
 
+            while (str[i])
+            {
+                if (str[i] != 32 && str[i] != 9)
+                    return (false);
+                i++;
+            }
+            return (true);
+        }
         void addcontact(const std::string& first_name, const std::string& last_name, const std::string& nickname, const std::string& darkest_secret, const std::string& number)
         {
-            if (index < 8)
+            if (is_all_spaces(first_name) == true ||
+                is_all_spaces(last_name) == true ||
+                is_all_spaces(nickname) == true ||
+                is_all_spaces(darkest_secret) == true ||
+                is_all_spaces(number) == true)
+                return ;
+            else if (index < 8)
             {
                 contacts[index].first_name = first_name;
                 contacts[index].last_name = last_name;
@@ -93,14 +110,14 @@ class PhoneBook
                     else
                     {
                         std::cout << "first name: " << contacts[userIndex].first_name << "\n";
-                        std::cout << "last  name: " << contacts[userIndex].last_name << "\n";
+                        std::cout << "last name: " << contacts[userIndex].last_name << "\n";
                         std::cout << "nickname: " << contacts[userIndex].nickname << "\n";
                         std::cout << "number: " << contacts[userIndex].number << "\n";
                         std::cout << "darkest_secret: " << contacts[userIndex].darkest_secret << "\n";
                     }
                 }
                 else
-                    std::cout << "Invalid input. Please enter a valid index.\n";
+                    std::cout << "\nInvalid input. Please enter a valid index.\n";
             }
             std::cout << std::endl;
         }
