@@ -1,4 +1,4 @@
-NAME = a.out
+NAME = Fixed
 
 SRCS = main.cpp Fixed.cpp
 
@@ -9,17 +9,17 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 AR  = ar rcs
-RM = rm -rf 
+RM = rm -rf
 
 all : $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) 
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
-clean : 
+clean :
 		@$(RM) $(OBJ)
 
 fclean : clean

@@ -1,7 +1,5 @@
 #include "PhoneBook.hpp"
 
-extern const int MAX_CONTACTS = 8;
-
 int eofcheck()
 {
     if (std::cin.eof())

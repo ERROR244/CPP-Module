@@ -9,9 +9,9 @@ class HumanA {
         std::string name;
         Weapon& weapon;
     public:
-        explicit HumanA(std::string n, Weapon& w);
+        HumanA(std::string n, Weapon& w);
         ~HumanA();
-        
+
         void attack();
 };
 

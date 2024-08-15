@@ -1,6 +1,6 @@
 NAME = MyAwesome
 
-SRCS = 	MyAwesome.cpp
+SRCS = 	MyAwesome.cpp PhoneBook.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 
@@ -9,17 +9,17 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 AR  = ar rcs
-RM = rm -rf 
+RM = rm -rf
 
 all : $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) 
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
-clean : 
+clean :
 		@$(RM) $(OBJ)
 
 fclean : clean

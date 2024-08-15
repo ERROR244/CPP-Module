@@ -14,7 +14,6 @@ int main(int ac, char **av)
             return 1;
         }
         replacefile << text;
-        // std::cout << text;
         replacefile.close();
     }
     else
