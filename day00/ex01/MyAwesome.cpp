@@ -1,6 +1,6 @@
 #include "PhoneBook.hpp"
 
-extern const int MAX_CONTACTS = 8; 
+extern const int MAX_CONTACTS = 8;
 
 int eofcheck()
 {
@@ -30,9 +30,9 @@ int main()
 
         if (eofcheck() == 1)
             break;
-        else if (key == "EXIT" || key == "e")
+        else if (key == "EXIT")
             break;
-        else if (key == "ADD" || key == "a")
+        else if (key == "ADD")
         {
             std::cout << std::endl;
             do {
@@ -61,7 +61,7 @@ int main()
             manager.addcontact(first_name, last_name, nickname, darkest_secret, number);
             std::cout << "New contact added succesfully\n" << std::endl;
         }
-        else if (key == "SEARCH" || key == "s")
+        else if (key == "SEARCH")
             manager.displaycontacts();
     }
     return 0;

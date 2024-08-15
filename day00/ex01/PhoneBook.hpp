@@ -25,27 +25,9 @@ class PhoneBook
         int nexttoremove;
     public:
         PhoneBook() : index(0), nexttoremove(0) {}
-        bool is_all_spaces(const std::string& str)
-        {
-            int i = 0;
-
-            while (str[i])
-            {
-                if (str[i] != 32 && str[i] != 9)
-                    return (false);
-                i++;
-            }
-            return (true);
-        }
         void addcontact(const std::string& first_name, const std::string& last_name, const std::string& nickname, const std::string& darkest_secret, const std::string& number)
         {
-            if (is_all_spaces(first_name) == true ||
-                is_all_spaces(last_name) == true ||
-                is_all_spaces(nickname) == true ||
-                is_all_spaces(darkest_secret) == true ||
-                is_all_spaces(number) == true)
-                return ;
-            else if (index < 8)
+            if (index < 8)
             {
                 contacts[index].first_name = first_name;
                 contacts[index].last_name = last_name;
@@ -69,9 +51,7 @@ class PhoneBook
         std::string getString(const std::string& text)
         {
             if (text.length() > 10)
-            {
-                return text.substr(0, 10 - 1) + ".";
-            }
+                return text.substr(0, 9) + ".";
             else
                 return text;
         }
