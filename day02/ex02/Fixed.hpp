@@ -1,9 +1,9 @@
 #ifndef FIXED_HPP
 #define FIXED_HPP
 
-#include <fstream> 
+#include <fstream>
 #include <iostream>
-#include <sstream> 
+#include <sstream>
 #include <string>
 #include <cmath>
 
@@ -14,13 +14,9 @@ class Fixed {
         Fixed(const float a);
         Fixed(const Fixed& other);
         ~Fixed();
-        
+
         Fixed& operator=(const Fixed& other);
-        Fixed operator+(const Fixed& other) const;
-        Fixed operator-(const Fixed& other) const;
-        Fixed operator*(const Fixed& other) const;
-        Fixed operator/(const Fixed& other) const;
-        
+
         bool operator>(const Fixed& other) const;
         bool operator<(const Fixed& other) const;
         bool operator>=(const Fixed& other) const;
@@ -28,21 +24,25 @@ class Fixed {
         bool operator==(const Fixed& other) const;
         bool operator!=(const Fixed& other) const;
 
+        Fixed operator+(const Fixed& other) const;
+        Fixed operator-(const Fixed& other) const;
+        Fixed operator*(const Fixed& other) const;
+        Fixed operator/(const Fixed& other) const;
+
         Fixed& operator++();       // Pre-increment
         Fixed operator++(int);     // Post-increment
         Fixed& operator--();       // Pre-decrement
         Fixed operator--(int);     // Post-decrement
 
-        int  getRawBits( void ) const;
-        void setRawBits( int const raw );
-        float toFloat( void ) const;
-        int toInt( void ) const;
-
-
         static Fixed& min(Fixed& a, Fixed& b);
         static const Fixed& min(const Fixed& a, const Fixed& b);
         static Fixed& max(Fixed& a, Fixed& b);
         static const Fixed& max(const Fixed& a, const Fixed& b);
+
+        int  getRawBits( void ) const;
+        void setRawBits( int const raw );
+        float toFloat( void ) const;
+        int toInt( void ) const;
     private:
         int value;
         static const int Bits = 8;

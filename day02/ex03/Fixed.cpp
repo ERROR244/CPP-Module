@@ -34,7 +34,7 @@ Fixed Fixed::operator*(const Fixed& other) const {
     result.setRawBits(static_cast<int>(temp >> Bits));
     return result;
 }
-  
+
 Fixed Fixed::operator/(const Fixed& other) const {
     Fixed result;
     if (other.value == 0) {

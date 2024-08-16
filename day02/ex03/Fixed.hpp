@@ -3,7 +3,7 @@
 
 #include <fstream> 
 #include <iostream>
-#include <sstream> 
+#include <sstream>
 #include <string>
 #include <cmath>
 
@@ -14,13 +14,13 @@ class Fixed {
         Fixed(const float a);
         Fixed(const Fixed& other);
         ~Fixed();
-        
+
         Fixed& operator=(const Fixed& other);
         Fixed operator+(const Fixed& other) const;
         Fixed operator-(const Fixed& other) const;
         Fixed operator*(const Fixed& other) const;
         Fixed operator/(const Fixed& other) const;
-        
+
         bool operator>(const Fixed& other) const;
         bool operator<(const Fixed& other) const;
         bool operator>=(const Fixed& other) const;

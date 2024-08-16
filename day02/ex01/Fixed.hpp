@@ -1,9 +1,9 @@
 #ifndef FIXED_HPP
 #define FIXED_HPP
 
-#include <fstream> 
+#include <fstream>
 #include <iostream>
-#include <sstream> 
+#include <sstream>
 #include <string>
 #include <cmath>
 
