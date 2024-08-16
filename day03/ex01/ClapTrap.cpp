@@ -1,10 +1,10 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : name("none"), Hit(10), Energy(10), damage(0) {
+ClapTrap::ClapTrap() : name("none"), Hit(100), Energy(50), damage(20) {
     std::cout << "Default constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(const std::string str) : name(str), Hit(10), Energy(10), damage(0) {
+ClapTrap::ClapTrap(const std::string str) : name(str), Hit(100), Energy(50), damage(20) {
     std::cout << "Init constructor called" << std::endl;
 }
 
@@ -14,18 +14,6 @@ ClapTrap::ClapTrap(const ClapTrap& other) {
     this->Hit = other.Hit;
     this->Energy = other.Energy;
     this->damage = other.damage;
-}
-
-ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
-    if (this != &other)
-    {
-        std::cout << "Copy assignment operator called " << std::endl;
-        this->name = other.name;
-        this->Hit = other.Hit;
-        this->Energy = other.Energy;
-        this->damage = other.damage;
-    }
-    return *this;
 }
 
 ClapTrap::~ClapTrap() {

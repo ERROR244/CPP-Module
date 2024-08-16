@@ -1,9 +1,9 @@
 #ifndef CLAPTRAP_HPP
 #define CLAPTRAP_HPP
 
-#include <fstream> 
+#include <fstream>
 #include <iostream>
-#include <sstream> 
+#include <sstream>
 #include <string>
 #include <cmath>
 
@@ -12,15 +12,14 @@ class ClapTrap {
         ClapTrap();
         ClapTrap(const std::string str);
         ClapTrap(const ClapTrap& toCopy);
-        
         ~ClapTrap();
 
-        ClapTrap& operator=(const ClapTrap& other);
+
 
         void attack(const std::string& target);
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
-    private:
+    protected:
         std::string  name;
         unsigned int Hit;
         unsigned int Energy;

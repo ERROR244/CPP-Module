@@ -1,4 +1,4 @@
-NAME = Aaaaand
+NAME = Serena
 
 SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
 

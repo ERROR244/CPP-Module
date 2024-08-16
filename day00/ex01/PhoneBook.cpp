@@ -1,25 +1,54 @@
 #include "PhoneBook.hpp"
 
+std::string Contacts::get_contact_field(int field)
+{
+    if (field == 1)
+      return (first_name);
+    if (field == 2)
+      return (last_name);
+    if (field == 3)
+      return (nickname);
+    if (field == 4)
+      return (darkest_secret);
+    if (field == 5)
+      return (number);
+    return ("none");
+}
+
+void Contacts::set_contact_field(int field, std::string string)
+{
+    if (field == 1)
+      first_name = string;
+    if (field == 2)
+      last_name = string;
+    if (field == 3)
+      nickname = string;
+    if (field == 4)
+      darkest_secret = string;
+    if (field == 5)
+      number = string;
+}
+
 PhoneBook::PhoneBook() : index(0), nexttoremove(0) {}
 
 void PhoneBook::addcontact(const std::string& first_name, const std::string& last_name, const std::string& nickname, const std::string& darkest_secret, const std::string& number)
 {
     if (index < 8)
     {
-        contacts[index].first_name = first_name;
-        contacts[index].last_name = last_name;
-        contacts[index].nickname = nickname;
-        contacts[index].darkest_secret = darkest_secret;
-        contacts[index].number = number;
+        contacts[index].set_contact_field(1, first_name);
+        contacts[index].set_contact_field(2, last_name);
+        contacts[index].set_contact_field(3, nickname);
+        contacts[index].set_contact_field(4, darkest_secret);
+        contacts[index].set_contact_field(5, number);
         index++;
     }
     else
     {
-        contacts[nexttoremove].first_name = first_name;
-        contacts[nexttoremove].last_name = last_name;
-        contacts[nexttoremove].nickname = nickname;
-        contacts[nexttoremove].darkest_secret = darkest_secret;
-        contacts[nexttoremove].number = number;
+        contacts[index].set_contact_field(1, first_name);
+        contacts[index].set_contact_field(2, last_name);
+        contacts[index].set_contact_field(3, nickname);
+        contacts[index].set_contact_field(4, darkest_secret);
+        contacts[index].set_contact_field(5, number);
         nexttoremove++;
         if (nexttoremove == 8)
             nexttoremove = 0;
@@ -37,13 +66,13 @@ std::string PhoneBook::getString(const std::string& text)
 void PhoneBook::printline(int index, const std::string& firstName, const std::string& lastName, const std::string& nickname)
 {
     std::cout << "|"
-              << std::setw(10) << index
+              << std::setw(10) << std::right << index
               << "|"
-              << std::setw(10) << getString(firstName)
+              << std::setw(10) << std::right << getString(firstName)
               << "|"
-              << std::setw(10) << getString(lastName)
+              << std::setw(10) << std::right << getString(lastName)
               << "|"
-              << std::setw(10) << getString(nickname)
+              << std::setw(10) << std::right << getString(nickname)
               << "|" << std::endl;
 }
 
@@ -56,7 +85,7 @@ void PhoneBook::displaycontacts()
         std::cout << "|-------------------------------------------|\n";
         std::cout << "|     index| FirstName|  LastName|  NickName|\n";
         for (int i = 0; i < index; ++i)
-            printline(i, contacts[i].first_name, contacts[i].last_name, contacts[i].nickname);
+            printline(i, contacts[i].get_contact_field(1), contacts[i].get_contact_field(2), contacts[i].get_contact_field(3));
         std::cout << "|-------------------------------------------|\n";
         int userIndex;
         std::string userinput;
@@ -69,11 +98,11 @@ void PhoneBook::displaycontacts()
                 std::cout << "\nthe index is out of rang\n";
             else
             {
-                std::cout << "first name: " << contacts[userIndex].first_name << "\n";
-                std::cout << "last name: " << contacts[userIndex].last_name << "\n";
-                std::cout << "nickname: " << contacts[userIndex].nickname << "\n";
-                std::cout << "number: " << contacts[userIndex].number << "\n";
-                std::cout << "darkest_secret: " << contacts[userIndex].darkest_secret << "\n";
+                std::cout << "first name: " << contacts[userIndex].get_contact_field(1) << "\n";
+                std::cout << "last name: " << contacts[userIndex].get_contact_field(2) << "\n";
+                std::cout << "nickname: " << contacts[userIndex].get_contact_field(3) << "\n";
+                std::cout << "number: " << contacts[userIndex].get_contact_field(4) << "\n";
+                std::cout << "darkest_secret: " << contacts[userIndex].get_contact_field(5) << "\n";
             }
         }
         else
