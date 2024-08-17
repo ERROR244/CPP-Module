@@ -19,14 +19,7 @@ class ClapTrap {
         void attack(const std::string& target);
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
-
-        std::string getName();
-        void setName(std::string name);
-
-        unsigned int getNum(int pos);
-        void setNum(unsigned int value, int pos);
-        void addNum(int value, int pos);
-    private:
+    protected:
         std::string  name;
         unsigned int Hit;
         unsigned int Energy;
