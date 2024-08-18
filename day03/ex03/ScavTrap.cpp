@@ -8,12 +8,12 @@ ScavTrap::ScavTrap(const std::string str) : ClapTrap(str) {
     std::cout << "Init ScavTrap constructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& other) {
+ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other) {
     std::cout << "Copy ScavTrap constructor called" << std::endl;
-    this->name = other.name;
-    this->Hit = other.Hit;
-    this->Energy = other.Energy;
-    this->damage = other.damage;
+    // setName(other.name);
+    // setNum(other.Hit, 1);
+    // setNum(other.Energy, 2);
+    // setNum(other.damage, 3);
 }
 
 ScavTrap::~ScavTrap() {
@@ -21,31 +21,31 @@ ScavTrap::~ScavTrap() {
 }
 
 void ScavTrap::attack(const std::string& target) {
-    if (this->Energy > 0 && this->Hit > 0) {
-        this->Energy--;
+    if (getNum(2) > 0 && getNum(1) > 0) {
+        setNum(-1, 2);
         std::cout << "ScavTrap \033[34m\""
-                << this->name
+                << getName()
                 << "\"\033[0m attacks "
                 << target
                 << ", causing "
-                << this->damage
+                << getNum(3)
                 << " points of damage!" << std::endl;
     }
-    else if (this->Energy == 0)
+    else if (getNum(2) == 0)
         std::cout << "\033[0;31m"
-                  << this->name
+                  << getName()
                   << "<->attack\033[0m <---> no Energy left"
                   << std::endl;
     else
         std::cout << "\033[0;31m"
-                  << this->name
+                  << getName()
                   << "<->attack\033[0m <---> already dead"
                   << std::endl;
 }
 
 void ScavTrap::guardGate() {
     std::cout << "ScavTrap \033[34m\""
-              << this->name
+              << getName()
               << "\"\033[0m is now in Gate keeper mode. "
               << std::endl;
 }

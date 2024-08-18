@@ -1,4 +1,5 @@
 #include "PhoneBook.hpp"
+#include "Contacts.hpp"
 
 int eofcheck()
 {

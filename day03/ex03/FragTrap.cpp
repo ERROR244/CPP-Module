@@ -8,12 +8,8 @@ FragTrap::FragTrap(const std::string str) : ClapTrap(str) {
     std::cout << "Init FragTrap constructor called" << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap& other) {
+FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other) {
     std::cout << "Copy FragTrap constructor called" << std::endl;
-    this->name = other.name;
-    this->Hit = other.Hit;
-    this->Energy = other.Energy;
-    this->damage = other.damage;
 }
 
 FragTrap::~FragTrap() {
@@ -21,28 +17,28 @@ FragTrap::~FragTrap() {
 }
 
 void FragTrap::attack(const std::string& target) {
-    if (this->Energy > 0 && this->Hit > 0) {
-        this->Energy--;
+    if (getNum(2) > 0 && getNum(1) > 0) {
+        setNum(-1, 2);
         std::cout << "FragTrap \033[34m\""
-                << this->name
-                << "\"\033[0m attacks "
-                << target
-                << ", causing "
-                << this->damage
+              << getName()
+              << "\"\033[0m attacks "
+              << target
+              << ", causing "
+              << getNum(3)
                 << " points of damage!" << std::endl;
     }
-    else if (this->Energy == 0)
+    else if (getNum(2) == 0)
         std::cout << "\033[0;31m"
-                  << this->name
+                  << getName()
                   << "<->attack\033[0m <---> no Energy left"
                   << std::endl;
     else
         std::cout << "\033[0;31m"
-                  << this->name
+                  << getName()
                   << "<->attack\033[0m <---> already dead"
                   << std::endl;
 }
 
 void FragTrap::highFivesGuys(void) {
-    std::cout << "High five! ✋ from FragTrap" << std::endl;
+    std::cout << "High five! ✋ from " << getName() << " FragTrap" << std::endl;
 }

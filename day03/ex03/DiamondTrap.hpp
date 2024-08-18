@@ -1,19 +1,20 @@
-#ifndef FRAGTRAP_HPP
-#define FRAGTRAP_HPP
+#ifndef DIAMONDTRAP_HPP
+#define DIAMONDTRAP_HPP
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-class FragTrap : public ClapTrap, public ScavTrap {
+class DiamondTrap : public FragTrap, public ScavTrap {
     public:
-        FragTrap();
-        FragTrap(const std::string str);
-        FragTrap(const FragTrap& toCopy);
-        ~FragTrap();
+        DiamondTrap();
+        DiamondTrap(const std::string str);
+        DiamondTrap(const DiamondTrap& toCopy);
+        ~DiamondTrap();
 
 
         void attack(const std::string& target);
-        void highFivesGuys(void);
+        void whoAmI();
 };
 
 #endif

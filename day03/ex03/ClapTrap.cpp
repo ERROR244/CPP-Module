@@ -87,3 +87,39 @@ void ClapTrap::beRepaired(unsigned int amount) {
                   << "<->beRepaired\033[0m <---> this->Hit + amount > 10"
                   << std::endl;
 }
+
+std::string ClapTrap::getName() {
+  return (name);
+}
+
+void ClapTrap::setName(std::string name) {
+    this->name = name;
+}
+
+unsigned int ClapTrap::getNum(int pos) {
+    if (pos == 1)
+      return (Hit);
+    if (pos == 2)
+      return (Energy);
+    if (pos == 3)
+      return (damage);
+    return (pos);
+}
+
+void ClapTrap::setNum(unsigned int value, int pos) {
+    if (pos == 1)
+      Hit = value;
+    if (pos == 2)
+      Energy = value;
+    if (pos == 3)
+      damage = value;
+}
+
+void ClapTrap::addNum(int value, int pos) {
+    if (pos == 1)
+      Hit += value;
+    if (pos == 2)
+      Energy += value;
+    if (pos == 3)
+      damage += value;
+}
