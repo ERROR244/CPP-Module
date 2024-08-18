@@ -17,10 +17,12 @@ bool bsp( Point const a, Point const b, Point const c, Point const point) {
     p = point.getXValue().toFloat();
     p1 = point.getYValue().toFloat();
 
-   A = area ( x, x1, y, y1, z, z1 );
-   A1 = area ( p, p1, y, y1, z, z1 );
-   A2 = area ( x, x1, p, p1, z, z1 );
-   A3 = area ( x, x1, y, y1, p, p1 );
+    A = area ( x, x1, y, y1, z, z1 );
+    A1 = area ( p, p1, y, y1, z, z1 );
+    A2 = area ( x, x1, p, p1, z, z1 );
+    A3 = area ( x, x1, y, y1, p, p1 );
 
+    if (A == 0 || A1 == 0 ||A2 == 0 || A3 == 0)
+        return (false);
     return (A == A1 + A2 + A3);
 }
