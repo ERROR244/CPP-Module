@@ -10,10 +10,6 @@ ScavTrap::ScavTrap(const std::string str) : ClapTrap(str) {
 
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other) {
     std::cout << "Copy ScavTrap constructor called" << std::endl;
-    // setName(other.name);
-    // setNum(other.Hit, 1);
-    // setNum(other.Energy, 2);
-    // setNum(other.damage, 3);
 }
 
 ScavTrap::~ScavTrap() {

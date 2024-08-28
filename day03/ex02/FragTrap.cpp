@@ -20,12 +20,12 @@ void FragTrap::attack(const std::string& target) {
     if (getNum(2) > 0 && getNum(1) > 0) {
         setNum(-1, 2);
         std::cout << "FragTrap \033[34m\""
-              << getName()
-              << "\"\033[0m attacks "
-              << target
-              << ", causing "
-              << getNum(3)
-                << " points of damage!" << std::endl;
+                  << getName()
+                  << "\"\033[0m attacks "
+                  << target
+                  << ", causing "
+                  << getNum(3)
+                  << " points of damage!" << std::endl;
     }
     else if (getNum(2) == 0)
         std::cout << "\033[0;31m"
@@ -40,5 +40,7 @@ void FragTrap::attack(const std::string& target) {
 }
 
 void FragTrap::highFivesGuys(void) {
-    std::cout << "High five! ✋ from " << getName() << " FragTrap" << std::endl;
+    std::cout << "High five! ✋ from "
+              << getName()
+              << " FragTrap" << std::endl;
 }

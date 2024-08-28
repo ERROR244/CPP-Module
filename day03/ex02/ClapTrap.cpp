@@ -1,10 +1,10 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : name("none"), Hit(100), Energy(50), damage(20) {
+ClapTrap::ClapTrap() : name("none"), Hit(100), Energy(100), damage(30) {
     std::cout << "Default ClapTrap constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(const std::string str) : name(str), Hit(100), Energy(50), damage(20) {
+ClapTrap::ClapTrap(const std::string str) : name(str), Hit(100), Energy(100), damage(30) {
     std::cout << "Init ClapTrap constructor called" << std::endl;
 }
 
@@ -62,14 +62,14 @@ void ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-    if (this->Energy > 0 && this->Hit > 0 && this->Hit + amount <= 10) {
+    if (this->Energy > 0 && this->Hit > 0 && this->Hit + amount <= 100) {
         this->Energy--;
         this->Hit += amount;
         std::cout << "ClapTrap \033[34m\""
                 << this->name
-                << "\"\033[0mbeRepaired, causing -"
+                << "\"\033[0mbeRepaired, causing +"
                 << amount
-                << " points of Energy!" << std::endl;
+                << " points of health!" << std::endl;
     }
     else if (this->Energy == 0)
         std::cout << "\033[0;31m"
@@ -84,7 +84,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
     else
         std::cout << "\033[0;31m"
                   << this->name
-                  << "<->beRepaired\033[0m <---> this->Hit + amount > 10"
+                  << "<->beRepaired\033[0m <---> this->Hit + amount > 100"
                   << std::endl;
 }
 
