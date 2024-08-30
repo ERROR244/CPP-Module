@@ -36,37 +36,67 @@ void ClapTrap::attack(const std::string& target) {
     if (this->Energy > 0 && this->Hit > 0) {
         this->Energy--;
         std::cout << "ClapTrap \033[34m\""
-                  << this->name
-                  << "\"\033[0m attacks "
-                  << target
-                  << ", causing "
-                  << this->damage
-                  << " points of damage!" << std::endl;
+                << this->name
+                << "\"\033[0m attacks "
+                << target
+                << ", causing "
+                << this->damage
+                << " points of damage!" << std::endl;
     }
+    else if (this->Energy == 0)
+        std::cout << "\033[0;31m"
+                  << this->name
+                  << "<->attack\033[0m <---> no Energy left"
+                  << std::endl;
+    else
+        std::cout << "\033[0;31m"
+                  << this->name
+                  << "<->attack\033[0m <---> already dead"
+                  << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
-    if (this->Hit > 0 && this->Energy > 0) {
+    if (this->Hit > 0) {
         if ((int)this->Hit - (int)amount >= 0)
             this->Hit = this->Hit - amount;
         else
             this->Hit = 0;
         std::cout << "ClapTrap \033[34m\""
-                  << this->name
-                  << "\"\033[0m takeDamage, causing "
-                  << amount
-                  << " points of damage!" << std::endl;
+                << this->name
+                << "\"\033[0mtakeDamage, causing "
+                << amount
+                << " points of damage!" << std::endl;
     }
+    else
+        std::cout << "\033[0;31m"
+                  << this->name
+                  << "<->takeDamage\033[0m <---> already dead"
+                  << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-    if (this->Energy > 0 && this->Hit > 0) {
+    if (this->Energy > 0 && this->Hit > 0 && this->Hit + amount <= 100) {
         this->Energy--;
         this->Hit += amount;
         std::cout << "ClapTrap \033[34m\""
-                  << this->name
-                  << "\"\033[0m beRepaired, causing +"
-                  << amount
-                  << " points of Hit!" << std::endl;
+                << this->name
+                << "\"\033[0mbeRepaired, causing +"
+                << amount
+                << " points of health!" << std::endl;
     }
+    else if (this->Energy == 0)
+        std::cout << "\033[0;31m"
+                  << this->name
+                  << "<->beRepaired\033[0m <---> no Energy left"
+                  << std::endl;
+    else if (this->Hit == 0)
+        std::cout << "\033[0;31m"
+                  << this->name
+                  << "<->beRepaired\033[0m <---> already dead"
+                  << std::endl;
+    else
+        std::cout << "\033[0;31m"
+                  << this->name
+                  << "<->beRepaired\033[0m <---> this->Hit + amount > 100"
+                  << std::endl;
 }
