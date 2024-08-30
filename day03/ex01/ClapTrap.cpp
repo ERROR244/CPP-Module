@@ -16,10 +16,21 @@ ClapTrap::ClapTrap(const ClapTrap& other) {
     this->damage = other.damage;
 }
 
+ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
+    if (this != &other)
+    {
+        std::cout << "Copy assignment operator called " << std::endl;
+        this->name = other.name;
+        this->Hit = other.Hit;
+        this->Energy = other.Energy;
+        this->damage = other.damage;
+    }
+    return *this;
+}
+
 ClapTrap::~ClapTrap() {
     std::cout << "ClapTrap Destructor called" << std::endl;
 }
-
 
 void ClapTrap::attack(const std::string& target) {
     if (this->Energy > 0 && this->Hit > 0) {
