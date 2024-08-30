@@ -12,10 +12,8 @@ class ClapTrap {
         ClapTrap();
         ClapTrap(const std::string str);
         ClapTrap(const ClapTrap& toCopy);
-        
-        ~ClapTrap();
-
         ClapTrap& operator=(const ClapTrap& other);
+        ~ClapTrap();
 
         void attack(const std::string& target);
         void takeDamage(unsigned int amount);

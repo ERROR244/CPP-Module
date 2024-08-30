@@ -1,11 +1,11 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : name("none"), Hit(10), Energy(10), damage(0) {
+ClapTrap::ClapTrap() : name("unnamed"), Hit(10), Energy(10), damage(0) {
     std::cout << "Default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string str) : name(str), Hit(10), Energy(10), damage(0) {
-    std::cout << "Init constructor called" << std::endl;
+    std::cout << "Default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other) {
@@ -36,48 +36,37 @@ void ClapTrap::attack(const std::string& target) {
     if (this->Energy > 0 && this->Hit > 0) {
         this->Energy--;
         std::cout << "ClapTrap \033[34m\""
-                << this->name
-                << "\"\033[0m attacks "
-                << target
-                << ", causing "
-                << this->damage
-                << " points of damage!" << std::endl;
+                  << this->name
+                  << "\"\033[0m attacks "
+                  << target
+                  << ", causing "
+                  << this->damage
+                  << " points of damage!" << std::endl;
     }
-    else if (this->Energy == 0)
-        printf("\033[0;31m%s<->attack\033[0m <---> no Energy left\n", this->name.c_str());
-    else
-        printf("\033[0;31m%s<->attack\033[0m <---> already dead\n", this->name.c_str());
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
-    if (this->Hit > 0) {
-        this->Hit = this->Hit - amount;
+    if (this->Hit > 0 && this->Energy > 0) {
+        if ((int)this->Hit - (int)amount >= 0)
+            this->Hit = this->Hit - amount;
+        else
+            this->Hit = 0;
         std::cout << "ClapTrap \033[34m\""
-                << this->name
-                << "\"\033[0mtakeDamage, causing "
-                << amount
-                << " points of damage!" << std::endl;
+                  << this->name
+                  << "\"\033[0m takeDamage, causing "
+                  << amount
+                  << " points of damage!" << std::endl;
     }
-    else
-        printf("\033[0;31m%s<->takeDamage\033[0m <---> already dead\n", this->name.c_str());
-    if (this->Hit < 0)
-        this->Hit = 0;
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-    if (this->Energy > 0 && this->Hit > 0 && this->Hit + amount <= 10) {
+    if (this->Energy > 0 && this->Hit > 0) {
         this->Energy--;
         this->Hit += amount;
         std::cout << "ClapTrap \033[34m\""
-                << this->name
-                << "\"\033[0mbeRepaired, causing -"
-                << amount
-                << " points of Energy!" << std::endl;
+                  << this->name
+                  << "\"\033[0m beRepaired, causing +"
+                  << amount
+                  << " points of Hit!" << std::endl;
     }
-    else if (this->Energy == 0)
-        printf("\033[0;31m%s<->beRepaired\033[0m <---> no Energy left\n", this->name.c_str());
-    else if (this->Hit == 0)
-        printf("\033[0;31m%s<->beRepaired\033[0m <---> already dead\n", this->name.c_str());
-    else
-        printf("\033[0;31m%s<->beRepaired\033[0m <---> this->Hit + amount > 10\n", this->name.c_str());
 }
