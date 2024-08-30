@@ -20,6 +20,7 @@ ClapTrap::~ClapTrap() {
     std::cout << "ClapTrap Destructor called" << std::endl;
 }
 
+
 void ClapTrap::attack(const std::string& target) {
     if (this->Energy > 0 && this->Hit > 0) {
         this->Energy--;
