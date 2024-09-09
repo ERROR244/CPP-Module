@@ -9,9 +9,6 @@ int main() {
 
 	std::cout << "\n\n";
 
-	Diamond.attack("Target");
-	named_Diamond.attack("named_Target");
-
 	std::cout << '\n';
 
 	Diamond.whoAmI();
@@ -19,25 +16,18 @@ int main() {
 
 	std::cout << '\n';
 
-	Diamond.takeDamage(30);
-	named_Diamond.takeDamage(30);
+	Diamond.printStats();
 
 	std::cout << '\n';
 
-	Diamond.beRepaired(20);
-	named_Diamond.beRepaired(20);
+	Diamond.attack("Target");
+	named_Diamond.attack("named_Target");
 
-	std::cout << '\n';
+	std::cout << "\n";
 
-	Diamond.highFivesGuys();
-	named_Diamond.highFivesGuys();
-
-	std::cout << '\n';
-
-	Diamond.guardGate();
-	named_Diamond.guardGate();
-
-	std::cout << "\n\n";
+	Diamond.printStats();
+	named_Diamond.printStats();
+	std::cout << "\n";
 
 
 
