@@ -1,10 +1,11 @@
 #ifndef CLAPTRAP_HPP
 #define CLAPTRAP_HPP
 
-#include <fstream>
+#include <fstream> 
 #include <iostream>
-#include <sstream>
+#include <sstream> 
 #include <string>
+#include <cmath>
 
 class ClapTrap {
     public:

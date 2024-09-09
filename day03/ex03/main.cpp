@@ -20,6 +20,16 @@ int main() {
 
 	std::cout << '\n';
 
+	Diamond.guardGate();
+	named_Diamond.guardGate();
+
+	std::cout << '\n';
+
+	Diamond.highFivesGuys();
+	named_Diamond.highFivesGuys();
+
+	std::cout << '\n';
+
 	Diamond.attack("Target");
 	named_Diamond.attack("named_Target");
 

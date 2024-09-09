@@ -1,15 +1,15 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : name("none"), Hit(10), Energy(10), damage(0) {
-    std::cout << "Default ClapTrap constructor called" << std::endl;
+ClapTrap::ClapTrap() : name("unnamed"), Hit(10), Energy(10), damage(0) {
+    std::cout << "Default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string str) : name(str), Hit(10), Energy(10), damage(0) {
-    std::cout << "Default ClapTrap constructor called" << std::endl;
+    std::cout << "Default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other) {
-    std::cout << "Copy ClapTrap constructor called" << std::endl;
+    std::cout << "Copy constructor called" << std::endl;
     this->name = other.name;
     this->Hit = other.Hit;
     this->Energy = other.Energy;
@@ -29,7 +29,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
 }
 
 ClapTrap::~ClapTrap() {
-    std::cout << "ClapTrap Destructor called" << std::endl;
+    std::cout << "Destructor called" << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target) {
@@ -63,7 +63,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
             this->Hit = 0;
         std::cout << "ClapTrap \033[34m\""
                 << this->name
-                << "\"\033[0m takeDamage, causing "
+                << "\"\033[0mtakeDamage, causing "
                 << amount
                 << " points of damage!" << std::endl;
     }
@@ -75,7 +75,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-    if (this->Energy > 0 && this->Hit > 0 && this->Hit + amount <= 100) {
+    if (this->Energy > 0 && this->Hit > 0 && this->Hit + amount <= 10) {
         this->Energy--;
         this->Hit += amount;
         std::cout << "ClapTrap \033[34m\""
@@ -97,6 +97,6 @@ void ClapTrap::beRepaired(unsigned int amount) {
     else
         std::cout << "\033[0;31m"
                   << this->name
-                  << "<->beRepaired\033[0m <---> this->Hit + amount > 100"
+                  << "<->beRepaired\033[0m <---> this->Hit + amount > 10"
                   << std::endl;
 }

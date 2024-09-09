@@ -2,7 +2,7 @@
 
 ScavTrap::ScavTrap() : ClapTrap() {
     std::cout << "Default ScavTrap constructor called" << std::endl;
-	this->name = "none";
+	this->name = "unnamed";
     this->Hit = 100;
 	this->Energy = 50;
 	this->damage = 20;
@@ -51,15 +51,15 @@ void ScavTrap::attack(const std::string& target) {
                 << this->damage
                 << " points of damage!" << std::endl;
     }
-    else if (this->Energy == 0)
+    else if (this->Hit == 0)
         std::cout << "\033[0;31m"
                   << this->name
-                  << "<->attack\033[0m <---> no Energy left"
+                  << "<->attack\033[0m <---> already dead"
                   << std::endl;
     else
         std::cout << "\033[0;31m"
                   << this->name
-                  << "<->attack\033[0m <---> already dead"
+                  << "<->attack\033[0m <---> no Energy left"
                   << std::endl;
 }
 
@@ -71,14 +71,14 @@ void ScavTrap::guardGate() {
                   << "\"\033[0m is now in Gate keeper mode. "
                   << std::endl;
     }
-    else if (this->Energy == 0)
+    else if (this->Hit == 0)
         std::cout << "\033[0;31m"
                   << this->name
-                  << "<->guardGate mode\033[0m <---> no Energy left"
+                  << "<->guardGate mode\033[0m <---> already dead"
                   << std::endl;
     else
         std::cout << "\033[0;31m"
                   << this->name
-                  << "<->guardGate mode\033[0m <---> already dead"
+                  << "<->guardGate mode\033[0m <---> no Energy left"
                   << std::endl;
 }
