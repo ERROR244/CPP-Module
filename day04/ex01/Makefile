@@ -1,6 +1,6 @@
-NAME = animal
+NAME = the-world-on-fire
 
-SRCS = src/main.cpp src/Animal.cpp src/WrongAnimal.cpp src/Dog.cpp src/Cat.cpp src/WrongCat.cpp
+SRCS = src/main.cpp src/Animal.cpp src/WrongAnimal.cpp src/Dog.cpp src/Cat.cpp src/WrongCat.cpp src/Brain.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 
