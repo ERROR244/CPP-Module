@@ -25,6 +25,9 @@ int main() {
     tmp = src->createMateria("cure");
     me->equip(tmp);
 
+    me->unequip(2);
+    me->unequip(3);
+
     tmp = src->createMateria("ice");
     me->equip(tmp);
     tmp = src->createMateria("cure");

@@ -1,4 +1,4 @@
-NAME =  Abstract
+NAME =  BOSS
 
 SRCS = src/main.cpp src/AMateria.cpp src/Character.cpp src/Cure.cpp src/Ice.cpp src/ICharacter.cpp src/IMateriaSource.cpp src/MateriaSource.cpp
 
