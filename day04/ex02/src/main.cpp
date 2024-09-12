@@ -6,18 +6,55 @@
 
 int main()
 {
-    // const Animal a;
-    // const Animal* a = new Animal();
+
     const Animal* j = new Dog();
     const Animal* i = new Cat();
 
-    std::cout << std::endl;
-    j->makeSound();
-    i->makeSound();
-    std::cout << std::endl;
-
     delete j;//should not create a leak
     delete i;
+
+    // tried to create an object from Animal
+
+    // const Animal an = Animal();
+    // const Animal* an = new Animal();
+    // delete an;
+
+    // deep copy
+
+    Dog basic1;
+    {
+        Dog tmp1 = basic1;
+        tmp1.makeSound();
+    }
+
+    basic1.makeSound();
+
+    Cat basic2;
+    {
+        Cat tmp2;
+        tmp2 = basic2;
+        tmp2.makeSound();
+    }
+
+    basic2.makeSound();
+
+    // array test
+    int size = 10;
+    const Animal* meta[size];
+
+    for (int i = 0; i < size; i++)
+    {
+        if (i < (int)(size/2))
+            meta[i] = new Dog();
+        else
+            meta[i] = new Cat();
+        std::cout << std::endl;
+        meta[i]->makeSound();
+        std::cout << std::endl;
+    }
+
+    for (int i = 0; i < size; i++)
+        delete meta[i];
 
     return 0;
 }

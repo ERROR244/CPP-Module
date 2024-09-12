@@ -6,14 +6,34 @@
 
 int main()
 {
+
     const Animal* j = new Dog();
     const Animal* i = new Cat();
 
     delete j;//should not create a leak
     delete i;
 
-    int size = 10;
+    // deep copy
 
+    Dog basic1;
+    {
+        Dog tmp1 = basic1;
+        tmp1.makeSound();
+    }
+
+    basic1.makeSound();
+    
+    Cat basic2;
+    {
+        Cat tmp2;
+        tmp2 = basic2;
+        tmp2.makeSound();
+    }
+
+    basic2.makeSound();
+
+    // array test
+    int size = 10;
     const Animal* meta[size];
 
     for (int i = 0; i < size; i++)
