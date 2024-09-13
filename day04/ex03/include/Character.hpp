@@ -6,24 +6,25 @@
 #include <sstream>
 #include <string>
 
-#include "AMateria.hpp"
+#include "linkedList.hpp"
 
 class Character : public ICharacter
 {
     private:
         std::string name;
-        AMateria* inv[4];
+        AMateria*   inv[4];
+        Node*       node;
     public:
         Character(std::string const & name);
         Character(Character const & other);
         Character & operator=(Character const & other);
-        virtual ~Character();
+        ~Character();
 
 
-        virtual std::string const & getName() const;
-        virtual void equip(AMateria* m);
-        virtual void unequip(int idx);
-        virtual void use(int idx, ICharacter& target);
+        std::string const & getName() const;
+        void equip(AMateria* m);
+        void unequip(int idx);
+        void use(int idx, ICharacter& target);
 };
 
 #endif

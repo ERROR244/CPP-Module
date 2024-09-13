@@ -5,12 +5,20 @@ MateriaSource::MateriaSource()
     std::cout << "Default MateriaSource construction called" << std::endl;
     for (int i = 0; i < 4; i++)
         this->temp[i] = NULL;
+    this->node = NULL;
 }
 
 MateriaSource::MateriaSource(MateriaSource const & other)
 {
     std::cout << "MateriaSource copy construction called" << std::endl;
-    *this = other;
+    this->node = NULL;
+    for (int i = 0; i < 4; i++)
+    {
+        if (other.temp[i])
+            this->temp[i] = other.temp[i]->clone();
+        else
+            this->temp[i] = NULL;
+    }
 }
 
 MateriaSource & MateriaSource::operator=(MateriaSource const & other)
@@ -20,8 +28,7 @@ MateriaSource & MateriaSource::operator=(MateriaSource const & other)
     {
         for (int i = 0; i < 4; i++)
         {
-            if (this->temp[i])
-                delete this->temp[i];
+            delete this->temp[i];
             if (other.temp[i])
                 this->temp[i] = other.temp[i]->clone();
             else
@@ -36,6 +43,7 @@ MateriaSource::~MateriaSource()
     std::cout << "MateriaSource Destructor called" << std::endl;
     for (size_t i = 0; i < 4; i++)
         delete this->temp[i];
+    deleteList(node);
 }
 
 void MateriaSource::learnMateria(AMateria* m)
@@ -48,7 +56,7 @@ void MateriaSource::learnMateria(AMateria* m)
             return;
         }
     }
-    delete m;
+    this->node = insertNode(this->node, m);
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)

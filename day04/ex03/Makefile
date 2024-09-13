@@ -1,12 +1,12 @@
 NAME =  BOSS
 
-SRCS = src/main.cpp src/AMateria.cpp src/Character.cpp src/Cure.cpp src/Ice.cpp src/ICharacter.cpp src/IMateriaSource.cpp src/MateriaSource.cpp
+SRCS = src/main.cpp src/AMateria.cpp src/Character.cpp src/Cure.cpp src/Ice.cpp src/linkedList.cpp src/MateriaSource.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -I./include
+CFLAGS = -Wall -Wextra  -std=c++98 -I./include
 
 AR  = ar rcs
 RM = rm -rf
