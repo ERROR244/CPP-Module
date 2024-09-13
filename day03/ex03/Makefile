@@ -1,12 +1,12 @@
 NAME = DiamondTrap
 
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
+SRCS = src/main.cpp src/ClapTrap.cpp src/ScavTrap.cpp src/FragTrap.cpp src/DiamondTrap.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow -I./include
 
 AR  = ar rcs
 RM = rm -rf

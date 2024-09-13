@@ -1,12 +1,12 @@
 NAME = BSP
 
-SRCS = main.cpp Fixed.cpp point.cpp bsp.cpp
+SRCS = src/main.cpp src/Fixed.cpp src/point.cpp src/bsp.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -I./include
 
 AR  = ar rcs
 RM = rm -rf

@@ -1,12 +1,12 @@
 NAME = MyAwesome
 
-SRCS = 	MyAwesome.cpp PhoneBook.cpp
+SRCS = src/MyAwesome.cpp src/PhoneBook.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -I./include
 
 AR  = ar rcs
 RM = rm -rf

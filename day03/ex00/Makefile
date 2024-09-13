@@ -1,12 +1,12 @@
 NAME = Aaaaand
 
-SRCS = main.cpp ClapTrap.cpp
+SRCS = src/main.cpp src/ClapTrap.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -I./include
 
 AR  = ar rcs
 RM = rm -rf

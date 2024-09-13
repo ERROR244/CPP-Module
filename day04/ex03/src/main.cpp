@@ -13,12 +13,13 @@ int main()
         srcc->learnMateria(new Ice());
         srcc->learnMateria(new Cure());
 
-        IMateriaSource* src = new MateriaSource(*(MateriaSource*)srcc);
-        delete srcc;
+        AMateria* tmp = srcc->createMateria("ice");
 
-        AMateria* tmp = src->createMateria("ice");
+        IMateriaSource* src = new MateriaSource(*(MateriaSource*)srcc);
 
         original->equip(tmp);
+
+        delete srcc;
 
         ICharacter* copy = new Character(*(Character*)original);
 

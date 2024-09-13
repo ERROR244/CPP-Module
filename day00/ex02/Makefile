@@ -1,12 +1,12 @@
 NAME = Account
 
-SRCS = Account.cpp tests.cpp
+SRCS = src/Account.cpp src/tests.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 
 CC = c++
 
-CFLAGS = -Wall -Wextra  -std=c++98
+CFLAGS = -Wall -Wextra  -std=c++98 -I./include
 
 AR  = ar rcs
 RM = rm -rf 

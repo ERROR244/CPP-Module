@@ -1,6 +1,6 @@
 NAME = out
 
-SRCS = main.cpp
+SRCS = src/main.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 

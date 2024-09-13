@@ -1,11 +1,11 @@
 #include "point.hpp"
 
 int main( void ) {
-    // Point a(  2.7493, 4.4154 );
-    // Point b( 7.1103, 4.9561 );
-    // Point c( 5.4512, 12.976 );
-    // Point p1( 5.02466, 8.2002 );
-    // Point p2( 1.7064, 11.083 );
+    Point a(  2.7493, 4.4154 );
+    Point b( 7.1103, 4.9561 );
+    Point c( 5.4512, 12.976 );
+    Point p1( 5.02466, 8.2002 );
+    Point p2( 1.7064, 11.083 );
 
     // Point a( -5, 0 );
     // Point b( 0, 5 );
