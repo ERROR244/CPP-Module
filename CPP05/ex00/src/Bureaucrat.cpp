@@ -12,7 +12,12 @@
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(const std::string _name, const int _grade) : name(_name), grade(_grade) {
+Bureaucrat::Bureaucrat() : name("bob") {
+    // std::cout << "Bureaucrat default constructor called" << std::endl;
+    this->grade = 150;
+}
+
+Bureaucrat::Bureaucrat(const std::string _name, const int _grade) : name(_name) {
     // std::cout << "Bureaucrat default constructor called" << std::endl;
     if (_grade < 1) {
         throw GradeTooHighException();
