@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksohail <ksohail@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:19:41 by ksohail           #+#    #+#             */
-/*   Updated: 2024/11/16 02:33:34 by ksohail          ###   ########.fr       */
+/*   Updated: 2024/11/28 10:58:28 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include <cstdlib>
+// #include <cstdlib>
 
 int main() {
     try {
