@@ -6,20 +6,20 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:19:41 by ksohail           #+#    #+#             */
-/*   Updated: 2024/11/28 14:36:48 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:28:53 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
-// #include <cstdlib>
+#include <cstdlib>
 
 int main() {
     try {
         Bureaucrat b1("bob", 1);
         Bureaucrat b2("bob", 10);
-        Form f1("1337", 1, 1, 0);
-        Form f2("1337", 1, 1, 0);
+        Form f1("1337", 5, 1);
+        Form f2("1337", 5, 1);
 
         std::cout << b1;
         std::cout << b2;
@@ -28,10 +28,8 @@ int main() {
 
         std::cout << "\n\n";
         
-        f1.beSigned(b1);
-        f2.beSigned(b2);
-        b1.signForm();
-        b2.signForm();
+        b1.signForm(f1);
+        b2.signForm(f2);
         
         std::cout << "\n\n";
 
@@ -56,21 +54,18 @@ int main() {
 }
 
 // int main(int ac, char **av) {
-//     if (ac == 5)
+//     if (ac == 3)
 //     {
 //         try {
-//             Bureaucrat b("bob", atoi(av[1]));
-//             Form f(av[2], atoi(av[3]), atoi(av[4]), 0);
+//             Bureaucrat b("bob", atoi(av[2]));
+//             Form f("1337", atoi(av[1]), 1);
 
 //             std::cout << b;
 //             std::cout << f;
 
 //             std::cout << "\n\n";
             
-//             f.beSigned(b);
-//             b.signForm();
-//             f.beSigned(b);
-//             b.signForm();
+//             b.signForm(f);
             
 //             std::cout << "\n\n";
 

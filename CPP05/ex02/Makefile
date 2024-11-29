@@ -1,6 +1,6 @@
-NAME = Form
+NAME =  28B
 
-SRCS = src/main.cpp src/Bureaucrat.cpp src/Form.cpp
+SRCS = src/main.cpp src/Bureaucrat.cpp src/AForm.cpp src/PresidentialPardonForm.cpp src/RobotomyRequestForm.cpp src/ShrubberyCreationForm.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 

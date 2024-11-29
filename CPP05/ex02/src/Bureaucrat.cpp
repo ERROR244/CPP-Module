@@ -6,7 +6,7 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:19:39 by ksohail           #+#    #+#             */
-/*   Updated: 2024/11/29 11:22:13 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/11/29 10:25:04 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ Bureaucrat::~Bureaucrat() {
 }
 
 
-std::string Bureaucrat::getName() {
+std::string Bureaucrat::getName() const {
     return (name);
 }
 
-int Bureaucrat::getGrade() {
+int Bureaucrat::getGrade() const {
     return (grade);
 }
 
@@ -86,7 +86,7 @@ void Bureaucrat::decrement() {
     ++this->grade;
 }
 
-void Bureaucrat::signForm(Form& form) {
+void Bureaucrat::signForm(AForm& form) {
     try {
         form.beSigned(*this);
         std::cout << name << " signed " << form.getName() << std::endl;
@@ -96,6 +96,17 @@ void Bureaucrat::signForm(Form& form) {
                   << " because " << e.what() << std::endl;
     }
 
+}
+
+void Bureaucrat::executeForm(AForm const & form) {
+    try {
+        form.execute(*this);
+        std::cout << name << " executed " << form.getName() << std::endl;
+    }
+    catch (std::exception& e) {
+        std::cout << name << " couldn't execute " << form.getName() 
+                  << " because " << e.what() << std::endl;
+    }
 }
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat &b) {

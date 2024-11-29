@@ -6,7 +6,7 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:19:38 by ksohail           #+#    #+#             */
-/*   Updated: 2024/11/28 11:57:21 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:08:00 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 #include <iostream>
 
+class Form;
+
 class Bureaucrat
 {
     private:
         const std::string name;
-        std::string signMsg;
         int grade;
     public:
         Bureaucrat();
@@ -29,13 +30,11 @@ class Bureaucrat
         ~Bureaucrat();
 
         std::string getName();
-        std::string getSignMsg();
-        void setSignMsg(std::string msg);
         int getGrade();
         void increment();
         void decrement();
 
-        void signForm();
+        void signForm(Form& form);
 
         class GradeTooHighException : public std::exception {
         public:
@@ -54,3 +53,5 @@ class Bureaucrat
 std::ostream &operator<<(std::ostream &os, Bureaucrat &b);
 
 #endif
+
+#include "Form.hpp"

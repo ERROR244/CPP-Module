@@ -6,7 +6,7 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 10:34:53 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/11/28 12:02:29 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:26:38 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,22 @@ Form::Form() : name("bob"), signGrade(150), executeGrade(150), isSigned(false) {
     // std::cout << "Form default constructor called" << std::endl;
 }
 
-Form::Form(const std::string _name, const int _sGrade, const int _eGrade, const bool _isSigned) : name(_name), signGrade(_sGrade), executeGrade(_eGrade), isSigned(_isSigned) {
+Form::Form(const std::string _name, const int _sGrade, const int _eGrade) : name(_name), signGrade(_sGrade), executeGrade(_eGrade), isSigned(false) {
     // std::cout << "Form default constructor called" << std::endl;
-    if (_sGrade < 1) {
+    if (_sGrade < 1 || _eGrade < 1) {
         throw GradeTooHighException();
     }
-    else if (_sGrade > 150) {
-        throw GradeTooLowException();
-    }
-    if (_eGrade < 1) {
-        throw GradeTooHighException();
-    }
-    else if (_eGrade > 150) {
+    else if (_sGrade > 150 || _eGrade > 150) {
         throw GradeTooLowException();
     }
 }
 
 Form::Form(const Form &other) : name(other.name), signGrade(other.signGrade), executeGrade(other.executeGrade), isSigned(other.isSigned) {
     // std::cout << "Form copy constructor called" << std::endl;
-    if (other.signGrade < 1) {
+    if (other.signGrade < 1 || other.executeGrade < 1) {
         throw GradeTooHighException();
     }
-    else if (other.signGrade > 150) {
-        throw GradeTooLowException();
-    }
-    if (other.executeGrade < 1) {
-        throw GradeTooHighException();
-    }
-    else if (other.executeGrade > 150) {
+    else if (other.signGrade > 150 || other.executeGrade > 150) {
         throw GradeTooLowException();
     }
 }
@@ -79,19 +67,17 @@ bool Form::getIsSigned() {
 void Form::beSigned(Bureaucrat &b) {
     int temp = b.getGrade();
 
-    if (temp < 1) {
-        throw GradeTooHighException();
-    }
-    if (temp > 150) {
-        throw GradeTooLowException();
-    }
     if (temp <= signGrade) {
         isSigned = true;
-        b.setSignMsg(b.getName() + " signed " + name);
     }
     else {
         isSigned = false;
-        b.setSignMsg(b.getName() + " couldn’t sign " + name + " because the grade is less than the requirement");
+    }
+    if (temp < 1) {
+        throw GradeTooHighException();
+    }
+    if (temp > 150 || isSigned == false) {
+        throw GradeTooLowException();
     }
 }
 
