@@ -6,7 +6,7 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 18:54:17 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/11/30 17:11:35 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/11/30 18:02:45 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ float ScalarConverter::convertToFloat(std::string& str, std::string& floatEnd, s
             n++;
         } else { break; }
     }
-    // std::cout << str[idx] << ", " << n << ", " << value << std::endl;
-    if (idx != str.size() && ((n == 5 && str[idx] > '6') || n < 4)) {
+    std::cout << str[idx] << ", " << n << ", " << value << std::endl;
+    if (idx != str.size() && (((n == 4) && (str[idx] >= '6' || (idx + 1 < str.size() && str[idx + 1] > '1'))) || (n < 4))) {
         floatEnd = "f";
         doubleEnd = "";
     }
@@ -89,8 +89,8 @@ double ScalarConverter::convertToDouble(std::string& str, std::string& floatEnd,
             n++;
         } else { break; }
     }
-    // std::cout << str[idx] << ", " << n << ", " << value << std::endl;
-    if (idx != str.size() && ((n == 5 && str[idx] > '6') || n < 4)) {
+    std::cout << str[idx] << ", " << n << ", " << value << std::endl;
+    if (idx != str.size() && (((n == 4) && str[idx] >= '5') || (n < 4))) {
         floatEnd = "f";
         doubleEnd = "";
     }
