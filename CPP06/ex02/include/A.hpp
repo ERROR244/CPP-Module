@@ -6,7 +6,7 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 19:31:10 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/11/30 19:32:28 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/12/01 12:23:28 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <iostream>
 #include <stdint.h>
 
-class A {
+class A : public Base {
 };
 
 #endif

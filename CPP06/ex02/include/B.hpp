@@ -6,19 +6,18 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 19:30:13 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/11/30 19:32:25 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/12/01 12:23:21 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "Base.hpp"
 
 #ifndef B_HPP
 #define B_HPP
 
 #include <iostream>
 #include <stdint.h>
+#include "Base.hpp"
 
-class B {
+class B : public Base {
 };
 
 #endif

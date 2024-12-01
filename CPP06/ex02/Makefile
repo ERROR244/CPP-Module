@@ -1,8 +1,6 @@
-NAME =  real
+NAME =  Identify
 
-SRCS = src/main.cpp src/real.cpp src/A.cpp src/B.cpp src/C.cpp src/func
-
-OBJ = $(SRCS:.cpp=.o)
+SRCS = src/main.cpp src/Base.cpp src/A.cpp src/B.cpp src/C.cpp src/func.cpp
 
 CC = c++
 
@@ -12,16 +10,10 @@ RM = rm -rf
 
 all : $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME): $(SRCS)
+	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
 
 clean :
-		@$(RM) $(OBJ)
-
-fclean : clean
 		@$(RM) $(NAME)
 
-re : fclean all
+re : clean all
