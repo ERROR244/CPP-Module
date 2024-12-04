@@ -6,15 +6,13 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 18:54:17 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/11/30 18:02:45 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/12/01 15:31:21 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter() {
-    
-}
+ScalarConverter::ScalarConverter() {}
 
 ScalarConverter::ScalarConverter(const ScalarConverter& other) {
     *this = other;
@@ -25,9 +23,7 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other) {
     return (*this);
 }
 
-ScalarConverter::~ScalarConverter() {
-
-}
+ScalarConverter::~ScalarConverter() {}
 
 
 int ScalarConverter::convertToInt(std::string& str) {
@@ -61,7 +57,6 @@ float ScalarConverter::convertToFloat(std::string& str, std::string& floatEnd, s
             n++;
         } else { break; }
     }
-    std::cout << str[idx] << ", " << n << ", " << value << std::endl;
     if (idx != str.size() && (((n == 4) && (str[idx] >= '6' || (idx + 1 < str.size() && str[idx + 1] > '1'))) || (n < 4))) {
         floatEnd = "f";
         doubleEnd = "";
@@ -89,7 +84,6 @@ double ScalarConverter::convertToDouble(std::string& str, std::string& floatEnd,
             n++;
         } else { break; }
     }
-    std::cout << str[idx] << ", " << n << ", " << value << std::endl;
     if (idx != str.size() && (((n == 4) && str[idx] >= '5') || (n < 4))) {
         floatEnd = "f";
         doubleEnd = "";
@@ -97,10 +91,20 @@ double ScalarConverter::convertToDouble(std::string& str, std::string& floatEnd,
     return (value);
 }
 
-void ScalarConverter::convert(std::string& str) {
+void ScalarConverter::convert(std::string str) {
     std::string floatEnd = ".0f";
     std::string doubleEnd = ".0";
-    if (str.length() == 1 && str[0] != '-' && str[0] != '+') {
+    if (str.compare("nan") == 0 || str.compare("nanf") == 0
+		|| str.compare("inf") == 0 || str.compare("inff") == 0
+		|| str.compare("+inf") == 0 || str.compare("+inff") == 0
+		|| str.compare("-inf") == 0 || str.compare("-inff") == 0) {
+			std::cout << "char: impossible" << std::endl;
+			std::cout << "int: impossible" << std::endl;
+			std::cout << "float: " << str << std::endl;
+			std::cout << "double: " << str << std::endl;
+			return;
+	}
+    else if (str.length() == 1 && str[0] != '-' && str[0] != '+') {
         try {
             char c = static_cast<char>(str[0]);
             std::cout << "char: " << (std::isprint(c) ? ("'" + std::string(1, c) + "'") : "Non displayable") << std::endl;

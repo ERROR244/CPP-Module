@@ -6,15 +6,13 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 18:17:57 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/11/30 19:06:33 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/12/01 15:34:01 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
 
-Serializer::Serializer() {
-    
-}
+Serializer::Serializer() {}
 
 Serializer::Serializer(const Serializer& other) {
     *this = other;
@@ -25,17 +23,13 @@ Serializer& Serializer::operator=(const Serializer& other) {
     return (*this);
 }
 
-Serializer::~Serializer() {
-
-}
+Serializer::~Serializer() {}
 
 uintptr_t Serializer::serialize(Data* ptr) {
-    uintptr_t memoryAddress = reinterpret_cast<uintptr_t>(ptr);
-    return (memoryAddress);
+    return (reinterpret_cast<uintptr_t>(ptr));
 }
 
 
 Data* Serializer::deserialize(uintptr_t raw) {
-    Data* dataPtr = reinterpret_cast<Data*>(raw);
-    return (dataPtr);
+    return (reinterpret_cast<Data*>(raw));
 }

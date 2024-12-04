@@ -6,7 +6,7 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 18:15:10 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/11/30 19:20:49 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/12/01 15:35:19 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 #include <SData.hpp>
 
 class Serializer {
-    public:
+    private:
         Serializer();
         Serializer(const Serializer& other);
         Serializer& operator=(const Serializer& other);
         ~Serializer();
-
-        uintptr_t serialize(Data* ptr);
-        Data* deserialize(uintptr_t raw);
+    public:
+        static uintptr_t serialize(Data* ptr);
+        static Data* deserialize(uintptr_t raw);
 };
 
 #endif

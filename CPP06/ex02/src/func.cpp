@@ -6,7 +6,7 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 19:35:50 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/12/01 13:16:33 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/12/04 21:22:20 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,42 +28,40 @@ Base * generate(void) {
 }
 
 void identify(Base* p) {
+    std::cout << "the type of the object pointed to is ";
     if (dynamic_cast<A*>(p)) {
-        std::cout << "the type of the object pointed to is A.\n";
+        std::cout << "A." << std::endl;
     }
     else if (dynamic_cast<B*>(p)) {
-        std::cout << "the type of the object pointed to is B.\n";
+        std::cout << "B." << std::endl;
     }
     else if (dynamic_cast<C*>(p)) {
-        std::cout << "the type of the object pointed to is C.\n";
+        std::cout << "C." << std::endl;
     }
     else {
-        std::cout << "Unknown type!\n";
+        std::cout << "Valid!" << std::endl;
     }
-}
+}   
 
 void identify(Base& p) {
-    try {
-        try { A& a = dynamic_cast<A&>(p); (void)a;}
-        catch (...) { throw BadTypeCastException(); }
-        std::cout << "the type of the object pointed to is A.\n";
-        return;
-    }
-    catch (const BadTypeCastException&) { }
-    try {
-        try { B& b = dynamic_cast<B&>(p); (void)b;}
-        catch (...) { throw BadTypeCastException(); }
-        std::cout << "the type of the object pointed to is B.\n";
-        return;
-    }
-    catch (const BadTypeCastException&) { }
-    try {
-        try { C& c = dynamic_cast<C&>(p); (void)c;}
-        catch (...) { throw BadTypeCastException(); }
-        std::cout << "the type of the object pointed to is C.\n";
-        return;
-    }
-    catch (const BadTypeCastException&) { }
-    std::cout << "Unknown type!\n";
+    std::cout << "the type of the object pointed to is ";
+	try {  
+		(void)dynamic_cast<A&>(p);
+		std::cout << "A." << std::endl;
+	}   
+    catch (std::exception&) {
+		try {
+			(void)dynamic_cast<B&>(p);
+			std::cout << "B." << std::endl;
+		}
+        catch (std::exception&) {
+			try {
+				(void)dynamic_cast<C&>(p);
+				std::cout << "C." << std::endl;
+			}
+            catch (std::exception&) {
+				std::cout << "Valid!" << std::endl;
+            }
+		}
+	}
 }
-

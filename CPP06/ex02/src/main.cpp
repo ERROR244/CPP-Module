@@ -6,7 +6,7 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 19:24:06 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/12/01 13:15:38 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/12/04 21:22:55 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int main() {
         base = generate();
         identify(*base);
         identify(base);
-        std::cout << "\n\n";
+        if (i + 1 != 10)
+            std::cout << "\n";
         delete base;
     }
     return (0);
