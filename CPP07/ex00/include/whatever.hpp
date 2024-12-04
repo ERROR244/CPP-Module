@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   func.hpp                                           :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 19:33:33 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/12/03 10:56:43 by ksohail-         ###   ########.fr       */
+/*   Created: 2024/12/03 11:07:15 by ksohail-          #+#    #+#             */
+/*   Updated: 2024/12/03 14:36:11 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FUNC_HPP
-#define FUNC_HPP
+#ifndef WHATEVER_HPP
+#define WHATEVER_HPP
 
-#include "Base.hpp"
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
+#include <iostream>
 
-Base * generate(void);
-void identify(Base* p);
-void identify(Base& p);
+template <typename T> void swap(T& x, T& y) {
+    T temp;
+
+    temp = x;
+    x = y;
+    y = temp;
+}
+
+template <typename T> T min(T x, T y) { return (x < y) ? x : y; }
+
+template <typename T> T max(T x, T y) { return (x > y) ? x : y; }
 
 #endif

@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   func.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 19:33:33 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/12/03 10:56:43 by ksohail-         ###   ########.fr       */
+/*   Created: 2024/12/03 11:07:17 by ksohail-          #+#    #+#             */
+/*   Updated: 2024/12/03 14:14:15 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FUNC_HPP
-#define FUNC_HPP
+#include "iter.hpp"
 
-#include "Base.hpp"
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
 
-Base * generate(void);
-void identify(Base* p);
-void identify(Base& p);
+void inc( int& x )
+{
+  x++;
+  return;
+}
 
-#endif
+void print( int& x )
+{
+  std::cout << x << std::endl;
+  return;
+}
+
+int main() {
+  int tab[] = { 9, 19, 29, 39, 49 };
+
+  iter( tab, 5, inc );
+  iter( tab, 5, print );
+
+  return 0;
+}

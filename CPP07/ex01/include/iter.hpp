@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   func.hpp                                           :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 19:33:33 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/12/03 10:56:43 by ksohail-         ###   ########.fr       */
+/*   Created: 2024/12/03 11:07:15 by ksohail-          #+#    #+#             */
+/*   Updated: 2024/12/03 14:35:55 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FUNC_HPP
-#define FUNC_HPP
+#ifndef ITER_HPP
+#define ITER_HPP
 
-#include "Base.hpp"
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
+#include <iostream>
 
-Base * generate(void);
-void identify(Base* p);
-void identify(Base& p);
+template <typename T1, typename T2, typename T3>
+    void iter(T1 x, T2 y, T3 z) {
+        for (int i =0; i < y; i++) { z(x[i]); }
+}
+
 
 #endif

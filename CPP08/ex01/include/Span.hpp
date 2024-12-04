@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   func.hpp                                           :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 19:33:33 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/12/03 10:56:43 by ksohail-         ###   ########.fr       */
+/*   Created: 2024/12/04 10:24:48 by ksohail-          #+#    #+#             */
+/*   Updated: 2024/12/04 11:41:32 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FUNC_HPP
-#define FUNC_HPP
+#ifndef SPAN_HPP
+#define SPAN_HPP
 
-#include "Base.hpp"
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
-
-Base * generate(void);
-void identify(Base* p);
-void identify(Base& p);
+#include <iostream>
+#include <vector>
+#include <list>
+#include <algorithm>
+#include <deque>
 
 #endif
