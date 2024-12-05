@@ -6,26 +6,26 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 10:04:10 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/12/05 15:59:56 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:46:34 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-myMap::myMap() : std::map<std::string, float>() {}
+myMap::myMap() : std::map<std::string, TowValue>() {}
 
-myMap::myMap(const myMap& other) : std::map<std::string, float>(other) {}
+myMap::myMap(const myMap& other) : std::map<std::string, TowValue>(other) {}
 
 myMap& myMap::operator=(const myMap& other) {
     if (this != &other) {
-        std::map<std::string, float>::operator=(other);
+        std::map<std::string, TowValue>::operator=(other);
     }
     return (*this);
 }
 
 myMap::~myMap() {}
 
-int convertToInt(std::string& str) {
+int convertToInt(std::string str) {
     std::istringstream iss(str);
     int value = 0;
 
@@ -56,13 +56,9 @@ void myMap::addKeyExchange(const std::string& key, const float exchange_rate) {
         throw std::invalid_argument("Key must be in the format YYYY-MM-DD.");
     }
 
-    std::string year = key.substr(0, C1);
-    std::string month = key.substr(C1 + 1, C2 - C1 - 1);
-    std::string day = key.substr(C2 + 1);
-
-    int yearInt = convertToInt(year);
-    int monthInt = convertToInt(month);
-    int dayInt = convertToInt(day);
+    int yearInt = convertToInt(key.substr(0, C1));
+    int monthInt = convertToInt(key.substr(C1 + 1, C2 - C1 - 1));
+    int dayInt = convertToInt(key.substr(C2 + 1));
 
     if (yearInt <= 0) {
         throw std::invalid_argument("Year must be a positive number.");
@@ -76,7 +72,7 @@ void myMap::addKeyExchange(const std::string& key, const float exchange_rate) {
     if (exchange_rate < 0) {
         throw std::invalid_argument("exchange_rate must be between 1 and 1000.");
     }
-    (*this)[key] = exchange_rate;
+    (*this)[key] = TowValue(((yearInt * 1000) + (monthInt * 100) + dayInt), exchange_rate);
 }
 
 
@@ -101,7 +97,7 @@ void myMap::addBufferExchange(std::ifstream& file) {
     } 
 }
 
-void addKeyValue(const std::string& key, const float value) {
+long checkValue(const std::string& key, const float value) {
     size_t C1 = key.find('-');
     size_t C2 = key.find('-', C1 + 1);
     size_t C3 = key.find('-', C2 + 1);
@@ -110,14 +106,10 @@ void addKeyValue(const std::string& key, const float value) {
         throw std::invalid_argument("Key must be in the format YYYY-MM-DD.");
     }
 
-    std::string year = key.substr(0, C1);
-    std::string month = key.substr(C1 + 1, C2 - C1 - 1);
-    std::string day = key.substr(C2 + 1);
-
-    int yearInt = convertToInt(year);
-    int monthInt = convertToInt(month);
-    int dayInt = convertToInt(day);
-
+    int yearInt = convertToInt(key.substr(0, C1));
+    int monthInt = convertToInt(key.substr(C1 + 1, C2 - C1 - 1));
+    int dayInt = convertToInt(key.substr(C2 + 1));
+    
     if (yearInt <= 0) {
         throw std::invalid_argument("Year must be a positive number.");
     }
@@ -130,18 +122,31 @@ void addKeyValue(const std::string& key, const float value) {
     if (value < 0 || value > 1000) {
         throw std::invalid_argument("value must be between 1 and 1000.");
     }
+    return ((yearInt * 1000) + (monthInt * 100) + dayInt);
 }
 
-myMap::const_iterator findClosestDate(const myMap& rates, const std::string& date) {
+myMap::const_iterator findClosestDate(const myMap& rates, const std::string& date, long D) {
     myMap::const_iterator it = rates.lower_bound(date);
-    if (it == rates.end() || it->first != date) {
-        if (it == rates.begin()) {
-            throw std::invalid_argument("Error: no exchange rate available for " + date);
-        }
-        --it;
+
+    if (it == rates.begin()) {
+        return (it);
     }
-    return (it);
+
+    if (it == rates.end()) {
+        --it;
+        return (it);
+    }
+
+    myMap::const_iterator prevIt = it;
+    --prevIt;
+    if (std::abs(it->second.date - D) < std::abs(prevIt->second.date  - D)) {
+        return (it);
+    }
+    else {
+        return (prevIt);
+    }
 }
+
 
 void addBufferValue(std::ifstream& file, const myMap& map) {
     std::string line;
@@ -170,12 +175,12 @@ void addBufferValue(std::ifstream& file, const myMap& map) {
                 value.erase(0, value.find_first_not_of(" "));
 
                 fValue = convertToFloat(value);
-                addKeyValue(key, fValue);
-                myMap::const_iterator closestDate = findClosestDate(map, key);
-                float rate = closestDate->second;
+                long D = checkValue(key, fValue);
+                myMap::const_iterator closestDate = findClosestDate(map, key, D);
+                float rate = closestDate->second.exchange_rate;
                 float result = fValue * rate;
 
-                std::cout << closestDate->second << " => " << value << " = " << result << std::endl;
+                std::cout << closestDate->first << " => " << value << " = " << result << std::endl;
         }
         catch(const std::exception& e) {
             std::cout << "ERROR: " << e.what() << std::endl;
