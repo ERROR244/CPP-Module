@@ -6,7 +6,7 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 10:04:12 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/12/05 12:48:05 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:51:09 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,13 @@ class myMap : public std::map<std::string, float> {
         myMap& operator=(const myMap& other);
         ~myMap();
 
-        int convertToInt(std::string& str);
-        float convertToFloat(std::string& str);
-        void addKeyValue(const std::string& key, const float value);
-        void addbuffer(std::ifstream& file);
+        void addKeyExchange(const std::string& key, const float exchange_rate);
+        void addBufferExchange(std::ifstream& file);
 };
+
+int convertToInt(std::string& str);
+float convertToFloat(std::string& str);
+void addBufferValue(std::ifstream& file, const myMap& map);
+void addKeyValue(const std::string& key, const float value);
 
 #endif
