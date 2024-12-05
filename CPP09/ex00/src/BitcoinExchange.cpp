@@ -6,7 +6,7 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 10:04:10 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/12/05 16:46:34 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/12/05 21:32:28 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,13 @@ void myMap::addKeyExchange(const std::string& key, const float exchange_rate) {
         throw std::invalid_argument("Key must be in the format YYYY-MM-DD.");
     }
 
-    int yearInt = convertToInt(key.substr(0, C1));
+    std::string strInt = key.substr(0, C1);
+    int yearInt = convertToInt(strInt);
     int monthInt = convertToInt(key.substr(C1 + 1, C2 - C1 - 1));
     int dayInt = convertToInt(key.substr(C2 + 1));
-
-    if (yearInt <= 0) {
-        throw std::invalid_argument("Year must be a positive number.");
+    
+    if (yearInt <= 0 || yearInt > 9999) {
+        throw std::invalid_argument("Year must be between 1 and 9999.");
     }
     if (monthInt < 1 || monthInt > 12) {
         throw std::invalid_argument("Month must be between 1 and 12.");
@@ -80,6 +81,9 @@ void myMap::addBufferExchange(std::ifstream& file) {
     std::string line;
 
     std::getline(file, line);
+    if (line != "date,exchange_rate") {
+        throw std::invalid_argument("ivalid first line from data base file");
+    }
     while (std::getline(file, line)) {
         size_t C1 = line.find(',');
         size_t C2 = line.find(',', C1 + 1);
@@ -131,15 +135,14 @@ myMap::const_iterator findClosestDate(const myMap& rates, const std::string& dat
     if (it == rates.begin()) {
         return (it);
     }
-
     if (it == rates.end()) {
+        it = rates.end();
         --it;
         return (it);
     }
-
     myMap::const_iterator prevIt = it;
     --prevIt;
-    if (std::abs(it->second.date - D) < std::abs(prevIt->second.date  - D)) {
+    if (std::abs(it->second.date - D) < std::abs(prevIt->second.date - D)) {
         return (it);
     }
     else {
@@ -153,6 +156,9 @@ void addBufferValue(std::ifstream& file, const myMap& map) {
     float fValue;
 
     std::getline(file, line);
+    if (line != "date | value") {
+        throw std::invalid_argument("ivalid first line from input file");
+    }
     while (std::getline(file, line)) {
         size_t C1 = line.find('|');
         size_t C2 = line.find('|', C1 + 1);
@@ -161,7 +167,7 @@ void addBufferValue(std::ifstream& file, const myMap& map) {
                 if (line.empty())
                     continue;
                 if (C1 == std::string::npos || C1 == 0) {
-                    throw std::invalid_argument("invalid value or data");
+                    throw std::invalid_argument("value and data can't be empty");
                 }
                 else if (C2 != std::string::npos) {
                     throw std::invalid_argument("line hase more than one \",\"");
