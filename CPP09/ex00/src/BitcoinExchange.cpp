@@ -6,7 +6,7 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 10:04:10 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/12/05 21:32:28 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/12/06 11:17:47 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,8 +157,6 @@ void addBufferValue(std::ifstream& file, const myMap& map) {
 
     std::getline(file, line);
     if (line != "date | value") {
-        throw std::invalid_argument("ivalid first line from input file");
-    }
     while (std::getline(file, line)) {
         size_t C1 = line.find('|');
         size_t C2 = line.find('|', C1 + 1);
