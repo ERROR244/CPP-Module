@@ -6,7 +6,7 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 10:41:27 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/12/07 12:13:33 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/12/07 14:50:25 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 PmergeMe::PmergeMe() {}
 
-PmergeMe::PmergeMe(const PmergeMe& other) {
-    (void)other;
-}
+PmergeMe::PmergeMe(const PmergeMe& other) { (void)other; }
 
 PmergeMe& PmergeMe::operator=(const PmergeMe& other) {
     if (this != &other) {
@@ -29,12 +27,14 @@ PmergeMe::~PmergeMe() {}
 
 void PmergeMe::print(int type) {
     if (type == 0) {
-        for (size_t i = 0; i < v.size(); i++)
+        for (size_t i = 0; i < v.size(); i++) {
             std::cout << v[i] << " ";
+        }
     }
     else {
-        for (size_t i = 0; i < d.size(); i++)
+        for (size_t i = 0; i < d.size(); i++) {
             std::cout << v[i] << " ";
+        }
     }
 }
 
@@ -47,7 +47,7 @@ bool PmergeMe::validateInput(const std::string& input) {
             return (false);
         }
     }
-    return true;
+    return (true);
 }
 
 bool PmergeMe::parseInput(int ac, char **av) {
@@ -73,7 +73,8 @@ bool PmergeMe::parseInput(int ac, char **av) {
 }
 
 void PmergeMe::mergeSortVector(std::vector<long long>& arr, int left, int right) {
-    if (left >= right) return;
+    if (left >= right)
+        return;
 
     int mid = left + (right - left) / 2;
     mergeSortVector(arr, left, mid);
@@ -100,7 +101,6 @@ void PmergeMe::mergeVector(std::vector<long long>& arr, int left, int mid, int r
             arr[k++] = arr2[j++];
         }
     }
-
     while (i < size1) {
         arr[k++] = arr1[i++];
     }
@@ -111,7 +111,8 @@ void PmergeMe::mergeVector(std::vector<long long>& arr, int left, int mid, int r
 
 
 void PmergeMe::mergeSortDeque(std::deque<long long>& arr, int left, int right) {
-    if (left >= right) return;
+    if (left >= right)
+        return;
 
     int mid = left + (right - left) / 2;
     mergeSortDeque(arr, left, mid);
@@ -138,7 +139,6 @@ void PmergeMe::mergeDeque(std::deque<long long>& arr, int left, int mid, int rig
             arr[k++] = arr2[j++];
         }
     }
-
     while (i < size1) {
         arr[k++] = arr1[i++];
     }
@@ -152,8 +152,6 @@ void PmergeMe::sortAndPrintResults() {
     mergeSortVector(v, 0, v.size() - 1);
     std::clock_t end1 = std::clock();
     
-    
-    
     std::clock_t start2 = std::clock();
     mergeSortDeque(d, 0, d.size() - 1);
     std::clock_t end2 = std::clock();
@@ -161,12 +159,12 @@ void PmergeMe::sortAndPrintResults() {
     double vectorTime = static_cast<double>(end1 - start1) / CLOCKS_PER_SEC * 1e6;
     double dequeTime = static_cast<double>(end2 - start2) / CLOCKS_PER_SEC * 1e6;;
     
-    std::cout << "after Vector: ";
+    std::cout << "Vector after: ";
     print(0);
     std::cout << "\n";
-    // std::cout << "after Deque: ";
+    // std::cout << "Deque after: ";
     // print(1);
     // std::cout << "\n";
-    std::cout << "Time to process a range of 5 elements with std::vector : " << vectorTime << " ms" << std::endl;
-    std::cout << "Time to process a range of 5 elements with std::deque : " << dequeTime << " ms" << std::endl;
+    std::cout << "Time to process a range of 5 elements with std::vector : " << vectorTime << " us" << std::endl;
+    std::cout << "Time to process a range of 5 elements with std::deque : " << dequeTime << " us" << std::endl;
 }
