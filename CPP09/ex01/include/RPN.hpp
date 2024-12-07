@@ -6,7 +6,7 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:18:35 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/12/06 12:51:19 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/12/07 10:33:26 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ struct calcArray {
 
 class RPN {
 private:
-    static std::stack<int> operandStack;
+    static std::stack<double> operandStack;
     static calcArray calc[4];
 
     RPN();
@@ -43,7 +43,7 @@ private:
     static void performOperation(char op);
     
 public:
-    static int calculate(const std::string& expression);
+    static double calculate(const std::string& expression);
 };
 
 #endif

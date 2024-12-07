@@ -6,13 +6,13 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:18:33 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/12/06 12:56:54 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/12/07 10:34:01 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-std::stack<int> RPN::operandStack;
+std::stack<double> RPN::operandStack;
 
 calcArray RPN::calc[4] = {
     {'+', RPN::calcP},
@@ -71,7 +71,7 @@ void RPN::performOperation(char op) {
     }
 }
 
-int RPN::calculate(const std::string& expression) {
+double RPN::calculate(const std::string& expression) {
     std::istringstream iss(expression);
     std::string token;
 

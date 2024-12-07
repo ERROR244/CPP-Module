@@ -6,7 +6,7 @@
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:18:31 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/12/06 12:35:08 by ksohail-         ###   ########.fr       */
+/*   Updated: 2024/12/07 10:33:31 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
     }
 
     try {
-        int result = RPN::calculate(argv[1]);
+        double result = RPN::calculate(argv[1]);
         std::cout << result << std::endl;
     }
     catch (const std::exception& e) {
